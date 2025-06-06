@@ -1,0 +1,15 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: "pagerduty"
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: "pagerduty"
+    pagerduty_configs:
+      - routing_key: "5b831710a5524603c059a5e0a4792fff"
+        severity: "{{ .CommonLabels.severity }}"
+        send_resolved: true
